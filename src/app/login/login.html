@@ -1,0 +1,70 @@
+<div class="login-container">
+
+  <div class="login-card">
+
+    <div class="logo">
+      🎓
+    </div>
+
+    <h2>
+      Student Management System
+    </h2>
+
+    <p class="subtitle">
+      Login to your account
+    </p>
+
+
+    <div class="mb-3">
+
+      <label class="form-label">
+        Email
+      </label>
+
+      <input
+        type="email"
+        class="form-control"
+        placeholder="Enter your email"
+        [(ngModel)]="email">
+
+    </div>
+
+
+    <div class="mb-3">
+
+      <label class="form-label">
+        Password
+      </label>
+
+      <input
+        type="password"
+        class="form-control"
+        placeholder="Enter your password"
+        [(ngModel)]="password">
+
+    </div>
+
+
+    <button
+      type="button"
+      class="btn btn-primary w-100"
+      (click)="login()">
+
+      Login
+
+    </button>
+
+
+    <p class="register-text">
+
+      Don't have an account?
+
+      <a routerLink="/register">
+        Register
+      </a>
+
+    </p>
+
+  </div>
+
+</div>

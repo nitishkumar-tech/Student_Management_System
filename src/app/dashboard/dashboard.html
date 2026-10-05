@@ -1,0 +1,294 @@
+<div class="dashboard">
+
+  <!-- Navbar -->
+
+  <nav class="navbar navbar-dark bg-primary">
+
+    <div class="container-fluid">
+
+      <span class="navbar-brand">
+        🎓 Student Management System
+      </span>
+
+      <button
+        class="btn btn-danger"
+        (click)="logout()">
+
+        Logout
+
+      </button>
+
+    </div>
+
+  </nav>
+
+
+  <div class="container mt-4">
+
+
+    <!-- Add / Edit Student -->
+
+    <div class="card shadow-sm mb-4">
+
+      <div class="card-body">
+
+        <h3>
+
+          {{
+            isEditMode
+              ? 'Edit Student'
+              : 'Add New Student'
+          }}
+
+        </h3>
+
+
+        <div class="row mt-3">
+
+
+          <div class="col-md-6">
+
+            <label>
+              Name
+            </label>
+
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter student name"
+              [(ngModel)]="student.name">
+
+          </div>
+
+
+          <div class="col-md-6">
+
+            <label>
+              Email
+            </label>
+
+            <input
+              type="email"
+              class="form-control"
+              placeholder="Enter email"
+              [(ngModel)]="student.email">
+
+          </div>
+
+        </div>
+
+
+        <div class="row mt-3">
+
+
+          <div class="col-md-6">
+
+            <label>
+              Age
+            </label>
+
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Enter age"
+              [(ngModel)]="student.age">
+
+          </div>
+
+
+          <div class="col-md-6">
+
+            <label>
+              Course
+            </label>
+
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter course"
+              [(ngModel)]="student.course">
+
+          </div>
+
+        </div>
+
+
+        <div class="mt-4">
+
+
+          <button
+            *ngIf="!isEditMode"
+            class="btn btn-primary me-2"
+            (click)="addStudent()">
+
+            + Add Student
+
+          </button>
+
+
+          <button
+            *ngIf="isEditMode"
+            class="btn btn-success me-2"
+            (click)="updateStudent()">
+
+            Update Student
+
+          </button>
+
+
+          <button
+            class="btn btn-secondary"
+            (click)="clearForm()">
+
+            Clear
+
+          </button>
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Student List -->
+
+    <div class="card shadow-sm">
+
+      <div class="card-body">
+
+
+        <div
+          class="d-flex justify-content-between align-items-center mb-3">
+
+          <h3>
+            📋 Student List
+          </h3>
+
+
+          <input
+            type="text"
+            class="form-control search-box"
+            placeholder="Search student..."
+            [(ngModel)]="searchText">
+
+        </div>
+
+
+        <div class="table-responsive">
+
+          <table
+            class="table table-bordered table-hover">
+
+
+            <thead class="table-primary">
+
+              <tr>
+
+                <th>ID</th>
+
+                <th>Name</th>
+
+                <th>Email</th>
+
+                <th>Age</th>
+
+                <th>Course</th>
+
+                <th>Action</th>
+
+              </tr>
+
+            </thead>
+
+
+            <tbody>
+
+
+              <tr
+                *ngFor="
+                  let student of filteredStudents
+                ">
+
+
+                <td>
+                  {{ student.id }}
+                </td>
+
+
+                <td>
+                  {{ student.name }}
+                </td>
+
+
+                <td>
+                  {{ student.email }}
+                </td>
+
+
+                <td>
+                  {{ student.age }}
+                </td>
+
+
+                <td>
+                  {{ student.course }}
+                </td>
+
+
+                <td>
+
+
+                  <button
+                    class="btn btn-primary btn-sm me-2"
+                    (click)="editStudent(student)">
+
+                    Edit
+
+                  </button>
+
+
+                  <button
+                    class="btn btn-danger btn-sm"
+                    (click)="deleteStudent(student.id)">
+
+                    Delete
+
+                  </button>
+
+
+                </td>
+
+              </tr>
+
+
+              <tr
+                *ngIf="
+                  filteredStudents.length === 0
+                ">
+
+                <td
+                  colspan="6"
+                  class="text-center">
+
+                  No students found.
+
+                </td>
+
+              </tr>
+
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
